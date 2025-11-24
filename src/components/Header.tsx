@@ -1,8 +1,9 @@
 import React from 'react';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 import { Link, useLocation } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const { data } = useData();
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -15,7 +16,7 @@ const Header: React.FC = () => {
             译
           </div>
           <div className="flex flex-col">
-            <h1 className="text-lg font-bold leading-none tracking-wide">{APP_DATA.companyName}</h1>
+            <h1 className="text-lg font-bold leading-none tracking-wide">{data.companyName}</h1>
             <span className="text-[0.6rem] opacity-90 tracking-widest">YIDAOJIAHUA</span>
           </div>
         </Link>

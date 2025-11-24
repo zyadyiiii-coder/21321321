@@ -11,7 +11,7 @@ export interface PortfolioItem {
   title: string;
   description?: string;
   imageUrl: string;
-  videoUrl?: string; // If present, it's a video item
+  videoUrl?: string; // URL to the video file (mp4)
   tags?: string[];
 }
 
@@ -22,6 +22,13 @@ export interface ServiceCategory {
   icon: string; // FontAwesome class
   description: string;
   items: PortfolioItem[];
+}
+
+export interface TeamMember {
+  id: string;
+  name?: string; // Optional, can use role as main identifier based on PDF
+  role: string;
+  imageUrl: string;
 }
 
 export interface ContactInfo {
@@ -36,4 +43,5 @@ export interface AppConfig {
   description: string;
   contact: ContactInfo;
   services: ServiceCategory[];
+  team: TeamMember[]; // Added team section
 }

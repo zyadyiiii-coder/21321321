@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
+  const { data } = useData();
+  
   return (
     <div className="pb-10">
       {/* Hero Section */}
@@ -18,7 +20,7 @@ const Home: React.FC = () => {
           <h1 className="text-6xl font-black mb-2 font-sans italic tracking-tighter">YIDAO</h1>
           <h2 className="text-2xl font-light tracking-[0.5em] mb-6">译道佳华</h2>
           <div className="w-16 h-1 bg-white mx-auto mb-6"></div>
-          <p className="text-xl font-medium">{APP_DATA.slogan}</p>
+          <p className="text-xl font-medium">{data.slogan}</p>
         </motion.div>
       </div>
 
@@ -30,7 +32,7 @@ const Home: React.FC = () => {
             <h3 className="text-2xl font-bold text-gray-800">公司简介</h3>
           </div>
           <p className="text-gray-600 leading-relaxed text-justify">
-            {APP_DATA.description}
+            {data.description}
           </p>
           <div className="mt-8 grid grid-cols-2 gap-4">
              <div className="bg-gray-50 p-4 rounded-lg text-center border border-gray-100">
@@ -45,6 +47,42 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Core Personnel Section */}
+      <section className="py-12 px-6 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+             <div className="inline-block bg-brand-red text-white px-4 py-2 text-lg font-bold rounded-sm shadow-md">
+                核心人员简介
+             </div>
+             <p className="text-gray-400 text-xs mt-2 uppercase">Core Personnel</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {data.team.map((member, index) => (
+              <motion.div 
+                key={member.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className="text-center"
+              >
+                <div className="aspect-[3/4] rounded-lg overflow-hidden mb-3 shadow-md relative group">
+                   <img 
+                     src={member.imageUrl} 
+                     alt={member.role} 
+                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                   />
+                   {/* Red overlay on hover similar to PDF style */}
+                   <div className="absolute inset-0 bg-brand-red/80 opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                </div>
+                <h4 className="text-sm font-bold text-gray-800">{member.name}</h4>
+                <p className="text-xs text-brand-red font-medium mt-1">{member.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Grid */}
       <section className="py-12 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
@@ -54,7 +92,7 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {APP_DATA.services.map((service, index) => (
+            {data.services.map((service, index) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, scale: 0.9 }}

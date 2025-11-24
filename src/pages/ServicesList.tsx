@@ -1,9 +1,11 @@
 import React from 'react';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const ServicesList: React.FC = () => {
+  const { data } = useData();
+  
   return (
     <div className="min-h-screen bg-white pb-10">
       <div className="py-8 px-6 border-b border-gray-100">
@@ -13,7 +15,7 @@ const ServicesList: React.FC = () => {
 
       <div className="max-w-4xl mx-auto px-4 py-6">
         <div className="space-y-4">
-          {APP_DATA.services.map((service, index) => (
+          {data.services.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ x: -20, opacity: 0 }}

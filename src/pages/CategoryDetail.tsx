@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 import { motion } from 'framer-motion';
 
 const CategoryDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const category = APP_DATA.services.find(s => s.id === id);
+  const { data } = useData();
+  const category = data.services.find(s => s.id === id);
 
   if (!category) {
     return <Navigate to="/" />;
@@ -31,36 +32,50 @@ const CategoryDetail: React.FC = () => {
                 <p>暂无案例展示</p>
             </div>
         ) : (
-            <div className="columns-1 md:columns-2 gap-4 space-y-4">
+            <div className="flex flex-col gap-6">
             {category.items.map((item, index) => (
                 <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="break-inside-avoid"
                 >
                 <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
                     <div className="relative group">
-                        <img 
-                            src={item.imageUrl} 
-                            alt={item.title} 
-                            className="w-full h-auto object-cover"
-                            loading="lazy"
-                        />
-                        {/* Overlay effect */}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                        {/* Logic to display Video or Image */}
+                        {item.videoUrl ? (
+                          <div className="w-full aspect-video bg-black">
+                            <video 
+                              controls 
+                              className="w-full h-full" 
+                              poster={item.imageUrl}
+                              preload="metadata"
+                            >
+                              <source src={item.videoUrl} type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        ) : (
+                          <>
+                            <img 
+                                src={item.imageUrl} 
+                                alt={item.title} 
+                                className="w-full h-auto object-cover"
+                                loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                          </>
+                        )}
                     </div>
                     <div className="p-4">
-                        <h3 className="font-bold text-gray-800 text-lg leading-tight mb-2">{item.title}</h3>
+                        <div className="flex items-center justify-between mb-2">
+                           <h3 className="font-bold text-gray-800 text-lg leading-tight">{item.title}</h3>
+                           {item.videoUrl && (
+                             <span className="text-xs font-bold text-brand-red border border-brand-red px-1.5 py-0.5 rounded">VIDEO</span>
+                           )}
+                        </div>
                         {item.description && (
                             <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
-                        )}
-                        {/* Simulated Video Badge */}
-                        {category.id === 'video' && (
-                             <div className="mt-3 inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-brand-red rounded text-xs font-medium">
-                                <i className="fa-solid fa-play-circle"></i> 视频案例
-                             </div>
                         )}
                     </div>
                 </div>

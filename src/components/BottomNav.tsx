@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 
 const BottomNav: React.FC = () => {
+  const { data } = useData();
   const location = useLocation();
 
   const handleScrollToTop = () => {
@@ -22,7 +23,7 @@ const BottomNav: React.FC = () => {
         </Link>
         
         <a 
-          href={`tel:${APP_DATA.contact.phone[0]}`}
+          href={`tel:${data.contact.phone[0]}`}
           className="flex flex-col items-center justify-center w-full h-full text-gray-500 hover:text-brand-red"
         >
           <div className="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center text-white -mt-6 shadow-lg border-4 border-white">
