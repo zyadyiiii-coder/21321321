@@ -125,7 +125,7 @@ export const APP_DATA: AppConfig = {
           title: "醒狮影视",
           description: "专业级前后期影视设备展示",
           imageUrl: "https://image.baidu.com/search/detail?adpicid=0&b_applid=11327985436057787050&bdtype=14&commodity=&copyright=&cs=4240266776%2C1707807648&di=58720257&fr=click-pic&fromurl=https%253A%252F%252Fuland.taobao.com%252Fitem%252Fedetail%253Fid%253DZQNbDBrF6tvXdA3sJ8XuVt6-N9n2xdJInqYvddJOcpG&gsm=1e&hd=&height=0&hot=&ic=&ie=utf-8&imgformat=&imgratio=&imgspn=0&is=2666220533%2C3915108298&isImgSet=&latest=&lid=e6a89e2200c0ea73&lm=&objurl=https%253A%252F%252Fimg.alicdn.com%252Fbao%252Fuploaded%252Fi4%252F2201413895906%252FO1CN01t6OQcw1tUzycKk4Wl_%2521%25212201413895906.jpg&os=2666220533%2C3915108298&pd=image_content&pi=0&pn=15&rn=1&simid=4240266776%2C1707807648&tn=baiduimagedetail&width=0&word=BMD&z=",
-          videoUrl: "https://www.bilibili.com/video/BV1KtUABrEsh/?spm_id_from=333.1007.tianma.1-1-1.click" // 示例视频链接，请替换为您的 .mp4 链接
+          videoUrl: "https://www.youtube.com/watch?v=SWsi3P8XsOA" // 示例视频链接，请替换为您的 .mp4 链接
         },
         {
           id: "v2",
