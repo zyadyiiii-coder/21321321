@@ -67,19 +67,21 @@ export const APP_DATA: AppConfig = {
           "title": "新案例标题",
           "description": "案例描述...",
           "imageUrl": "https://picsum.photos/800/600",
-          "videoUrl": ""
+          "videoUrl": "https://www.bilibili.com/video/BV1KtUABrEsh/?spm_id_from=333.1007.tianma.1-1-1.click"
         },
         {
           "id": "b1",
           "title": "未来方舟-甜蜜小镇",
           "description": "小区对外形象VI设计及施工图展示",
-          "imageUrl": "https://picsum.photos/800/600?random=1"
+          "imageUrl": "https://picsum.photos/800/600?random=1",
+          "videoUrl": "https://www.bilibili.com/video/BV1KtUABrEsh/?spm_id_from=333.1007.tianma.1-1-1.click"
         },
         {
           "id": "b2",
           "title": "贵州省图书馆“贵图猫”",
           "description": "形象IP设计规划",
-          "imageUrl": "https://picsum.photos/800/600?random=2"
+          "imageUrl": "https://picsum.photos/800/600?random=2",
+          "videoUrl": "https://www.bilibili.com/video/BV1KtUABrEsh/?spm_id_from=333.1007.tianma.1-1-1.click"
         },
         {
           "id": "b3",
