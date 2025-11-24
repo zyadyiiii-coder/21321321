@@ -1,8 +1,9 @@
 import { AppConfig, CategoryType } from '@/src/types';
+
 export const APP_DATA: AppConfig = {
-  "companyName": "译道佳华",134
-  "slogan": "为热爱而生 · 为您而来",3245
-  "description": "1贵州译道佳华文化发展有限公司，前身是一家经营10多年的品牌设计工作室。现以视觉传达为核心，协助各政府、机构、企业宣传推广的创意型文化发展公司。旗下拥有【醒狮影视】&【龙予成林音乐工作室】影音创作组织架构。111111111",
+  "companyName": "译道佳华",
+  "slogan": "2为热爱而生 · 为您而来",
+  "description": "1贵州译道佳华文化发展有限公司，前身是一家经营10多年的品牌设计工作室。现以视觉传达为核心，协助各政府、机构、企业宣传推广的创意型文化发展公司。旗下拥有【醒狮影视】&【龙予成林音乐工作室】影音创作组织架构。",
   "contact": {
     "companyName": "贵州译道佳华文化发展有限公司",
     "phone": [
@@ -15,14 +16,12 @@ export const APP_DATA: AppConfig = {
     {
       "id": "t1",
       "role": "导演 / 品牌设计师 / 主理人",
-      "imageUrl": "https://image.baidu.com/search/detail?adpicid=0&b_applid=11051528673476281140&bdtype=14&commodity=&copyright=&cs=3302417736%2C729835790&di=58720257&fr=click-pic&fromurl=https%253A%252F%252Fpages-fast.m.taobao.com%252Fwow%252Fz%252Fapp%252Ftb-pc-page%252Ftb-seo-ssr%252FmobileDetail%253Fx-ssr%253Dtrue%2526itemId%253DU3RWM3BmRnhzL1o1QzVzYkkrWlpLdz09%2526bc_fl_src%253Dtbsite_E9iM2QZz&gsm=168&hd=&height=0&hot=&ic=&ie=utf-8&imgformat=&imgratio=&imgspn=0&is=0%2C0&isImgSet=&latest=&lid=&lm=&objurl=https%253A%252F%252Fpages-fast.m.taobao.com%252Fwow%252Fz%252Fapp%252Ftb-pc-page%252Ftb-seo-ssr%252FmobileDetail%253Fx-ssr%253Dtrue%2526itemId%253DU3RWM3BmRnhzL1o1QzVzYkkrWlpLdz09%2526bc_fl_src%253Dtbsite_E9iM2QZz&os=2130317440%2C3216403265&pd=image_content&pi=0&pn=341&rn=1&simid=3302417736%2C729835790&tn=baiduimagedetail&width=0&word=BMD&z=",
-      "name": "456"
+      "imageUrl": "https://picsum.photos/400/500?random=t1"
     },
     {
       "id": "t2",
       "role": "导演 / 摄影指导 / 航拍 / 主理人",
-      "imageUrl": "https://image.baidu.com/search/detail?adpicid=0&b_applid=10532097209334659158&bdtype=0&commodity=&copyright=&cs=4090568833%2C527457721&di=7565560840087142401&fr=click-pic&fromurl=http%253A%252F%252Fwww.midifan.comxdf3xf6cu230ch.midifan.com%252Fmodulenews-detailview-13437.htm&gsm=0&hd=&height=0&hot=&ic=&ie=utf-8&imgformat=&imgratio=&imgspn=0&is=0%2C0&isImgSet=&latest=&lid=&lm=&objurl=https%253A%252F%252Fimage.midifan.com%252Fdata%252Fattach%252Falbum%252F2013%252F0307%252FIMG_6232_3_1362696018.jpg&os=3058415953%2C2887585075&pd=image_content&pi=0&pn=11&rn=1&simid=4201946683%2C485126378&tn=baiduimagedetail&width=0&word=BMD&z=&extParams=%7B%22fromPn%22%3A341%2C%22fromCs%22%3A%223302417736%2C729835790%22%7D",
-      "name": "6"
+      "imageUrl": "https://picsum.photos/400/500?random=t2"
     },
     {
       "id": "t3",
@@ -42,20 +41,17 @@ export const APP_DATA: AppConfig = {
     {
       "id": "t6",
       "role": "物料负责人",
-      "imageUrl": "https://picsum.photos/400/500?random=t6",
-      "name": "333"
+      "imageUrl": "https://picsum.photos/400/500?random=t6"
     },
     {
       "id": "t7",
       "role": "策划师 / 文案",
-      "imageUrl": "https://picsum.photos/400/500?random=t7",
-      "name": "123"
+      "imageUrl": "https://picsum.photos/400/500?random=t7"
     },
     {
       "id": "t8",
       "role": "搭建及美术指导",
-      "imageUrl": "https://picsum.photos/400/500?random=t8",
-      "name": "111"
+      "imageUrl": "https://picsum.photos/400/500?random=t8"
     }
   ],
   "services": [
@@ -67,25 +63,16 @@ export const APP_DATA: AppConfig = {
       "description": "VIS视觉品牌设计、室内外文化墙宣传展板展示规划设计、平面创意海报设计。",
       "items": [
         {
-          "id": "c1763993686850",
-          "title": "新案例标题",
-          "description": "案例描述...",
-          "imageUrl": "https://image.baidu.com/search/detail?adpicid=0&b_applid=11051528673476281140&bdtype=14&commodity=&copyright=&cs=3302417736%2C729835790&di=58720257&fr=click-pic&fromurl=https%253A%252F%252Fpages-fast.m.taobao.com%252Fwow%252Fz%252Fapp%252Ftb-pc-page%252Ftb-seo-ssr%252FmobileDetail%253Fx-ssr%253Dtrue%2526itemId%253DU3RWM3BmRnhzL1o1QzVzYkkrWlpLdz09%2526bc_fl_src%253Dtbsite_E9iM2QZz&gsm=168&hd=&height=0&hot=&ic=&ie=utf-8&imgformat=&imgratio=&imgspn=0&is=0%2C0&isImgSet=&latest=&lid=&lm=&objurl=https%253A%252F%252Fpages-fast.m.taobao.com%252Fwow%252Fz%252Fapp%252Ftb-pc-page%252Ftb-seo-ssr%252FmobileDetail%253Fx-ssr%253Dtrue%2526itemId%253DU3RWM3BmRnhzL1o1QzVzYkkrWlpLdz09%2526bc_fl_src%253Dtbsite_E9iM2QZz&os=2130317440%2C3216403265&pd=image_content&pi=0&pn=341&rn=1&simid=3302417736%2C729835790&tn=baiduimagedetail&width=0&word=BMD&z=",
-          "videoUrl": "https://www.bilibili.com/video/BV1KtUABrEsh/?spm_id_from=333.1007.tianma.1-1-1.click"
-        },
-        {
           "id": "b1",
           "title": "未来方舟-甜蜜小镇",
           "description": "小区对外形象VI设计及施工图展示",
-          "imageUrl": "https://picsum.photos/800/600?random=1",
-          "videoUrl": "https://www.bilibili.com/video/BV1KtUABrEsh/?spm_id_from=333.1007.tianma.1-1-1.click"
+          "imageUrl": "https://picsum.photos/800/600?random=1"
         },
         {
           "id": "b2",
           "title": "贵州省图书馆“贵图猫”",
           "description": "形象IP设计规划",
-          "imageUrl": "https://picsum.photos/800/600?random=2",
-          "videoUrl": "https://www.bilibili.com/video/BV1KtUABrEsh/?spm_id_from=333.1007.tianma.1-1-1.click"
+          "imageUrl": "https://picsum.photos/800/600?random=2"
         },
         {
           "id": "b3",
