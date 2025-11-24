@@ -12,7 +12,7 @@ import { AppConfig, CategoryType } from '../types';
 export const APP_DATA: AppConfig = {
   companyName: "译道佳华",
   slogan: "为热爱而生 · 为您而来",
-  description: "贵州译道佳华文化发展有限公司，前身是一家经营10多年的品牌设计工作室。现以视觉传达为核心，协助各政府、机构、企业宣传推广的创意型文化发展公司。旗下拥有【醒狮影视】&【龙予成林音乐工作室】影音创作组织架构。",
+  description: "1贵州译道佳华文化发展有限公司，前身是一家经营10多年的品牌设计工作室。现以视觉传达为核心，协助各政府、机构、企业宣传推广的创意型文化发展公司。旗下拥有【醒狮影视】&【龙予成林音乐工作室】影音创作组织架构。",
   contact: {
     companyName: "贵州译道佳华文化发展有限公司",
     phone: ["15985194981", "13984832580"],
@@ -125,7 +125,7 @@ export const APP_DATA: AppConfig = {
           title: "醒狮影视",
           description: "专业级前后期影视设备展示",
           imageUrl: "https://picsum.photos/800/600?random=10",
-          videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4" // 示例视频链接，请替换为您的 .mp4 链接
+          videoUrl: "https://www.bilibili.com/video/BV1KtUABrEsh/?spm_id_from=333.1007.tianma.1-1-1.click" // 示例视频链接，请替换为您的 .mp4 链接
         },
         {
           id: "v2",
