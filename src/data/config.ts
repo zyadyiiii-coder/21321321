@@ -23,7 +23,7 @@ export const APP_DATA: AppConfig = {
     {
       id: "t1",
       role: "导演 / 品牌设计师 / 主理人",
-      imageUrl: "https://www.freepik.com/free-vector/colorful-gradient-number-23-logo-design_57141160.htm" // 请替换为人员照片链接
+      imageUrl: "https://image.baidu.com/search/detail?adpicid=0&b_applid=11327985436057787050&bdtype=14&commodity=&copyright=&cs=3285821841%2C3336658481&di=58720257&fr=click-pic&fromurl=https%253A%252F%252Fuland.taobao.com%252Fitem%252Fedetail%253Fid%253DQ22ygn2cQtBW6kmAevTWvzSatQ-0zgbP4nH57OygY0Oinw&gsm=1e&hd=&height=0&hot=&ic=&ie=utf-8&imgformat=&imgratio=&imgspn=0&is=4035204065%2C3507120249&isImgSet=&latest=&lid=e6a89e2200c0ea73&lm=&objurl=https%253A%252F%252Fimg.alicdn.com%252Fbao%252Fuploaded%252Fi2%252F2218969432076%252FO1CN01p6PXMh1RCrHbrxRb8_%2521%25214611686018427379724-0-item_pic.jpg&os=4035204065%2C3507120249&pd=image_content&pi=0&pn=26&rn=1&simid=3285821841%2C3336658481&tn=baiduimagedetail&width=0&word=BMD&z=" // 请替换为人员照片链接
     },
     {
       id: "t2",
