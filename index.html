@@ -12,7 +12,7 @@
           extend: {
             colors: {
               brand: {
-                red: '#b91c1c', // Deep red from PDF
+                red: '#b91c1c',
                 dark: '#7f1d1d',
                 light: '#ef4444',
                 bg: '#f8fafc'
@@ -42,16 +42,19 @@
   <script type="importmap">
 {
   "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
-    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
   }
 }
 </script>
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
