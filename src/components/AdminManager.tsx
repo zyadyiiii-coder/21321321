@@ -8,10 +8,35 @@ const AdminManager: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'team' | 'cases' | 'export'>('cases');
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>(CategoryType.BRAND);
 
-  // Helper to update specific fields
+  // Helper to update specific fields for Company Info
   const handleCompanyInfoChange = (field: string, value: any) => {
     const newData = { ...data, [field]: value };
     updateData(newData);
+  };
+
+  // --- Helper: Handle Image Upload (Base64) ---
+  const handleImageUpload = (
+    e: React.ChangeEvent<HTMLInputElement>, 
+    onSuccess: (base64: string) => void
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Limit size to 500KB to prevent config file from becoming too large and crashing browser/editor
+    if (file.size > 500 * 1024) {
+      alert("图片过大！为了保证网站性能，请上传小于 500KB 的图片，或者手动输入外部图片链接。");
+      // Reset input value so user can try again
+      e.target.value = '';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      if (event.target?.result && typeof event.target.result === 'string') {
+        onSuccess(event.target.result);
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   // --- Team Logic ---
@@ -122,7 +147,7 @@ const AdminManager: React.FC = () => {
             onClick={() => setActiveTab('export')} 
             className={`px-4 py-3 text-sm font-medium whitespace-nowrap ${activeTab === 'export' ? 'text-blue-600 border-b-2 border-blue-600 bg-white' : 'text-gray-500 hover:text-gray-700'}`}
           >
-            导出/重置
+            导出/保存
           </button>
         </div>
 
@@ -155,10 +180,10 @@ const AdminManager: React.FC = () => {
                 {data.services.find(s => s.id === selectedCategory)?.items.map((item) => (
                   <div key={item.id} className="bg-white p-4 rounded shadow-sm border border-gray-200">
                     <div className="flex justify-between items-start mb-3">
-                      <div className="w-16 h-16 bg-gray-100 rounded overflow-hidden shrink-0 mr-3">
+                      <div className="w-20 h-20 bg-gray-100 rounded overflow-hidden shrink-0 mr-3 relative">
                         <img src={item.imageUrl} alt="" className="w-full h-full object-cover" />
                       </div>
-                      <button onClick={() => deleteCase(item.id)} className="text-red-500 hover:text-red-700 p-1">
+                      <button onClick={() => deleteCase(item.id)} className="text-red-500 hover:text-red-700 p-1" title="删除">
                         <i className="fa-regular fa-trash-can"></i>
                       </button>
                     </div>
@@ -181,24 +206,41 @@ const AdminManager: React.FC = () => {
                           className="w-full p-2 border border-gray-200 rounded text-sm h-20"
                         />
                       </div>
+                      
+                      {/* Image Upload Field */}
                       <div>
-                        <label className="block text-xs text-gray-400 mb-1">图片链接 (URL)</label>
-                        <input 
-                          type="text" 
-                          value={item.imageUrl} 
-                          onChange={(e) => updateCase(item.id, 'imageUrl', e.target.value)}
-                          className="w-full p-2 border border-gray-200 rounded text-sm font-mono text-xs"
-                          placeholder="https://..."
-                        />
+                        <label className="block text-xs text-gray-400 mb-1">图片 (链接 或 上传)</label>
+                        <div className="flex gap-2">
+                            <input 
+                              type="text" 
+                              value={item.imageUrl} 
+                              onChange={(e) => updateCase(item.id, 'imageUrl', e.target.value)}
+                              className="flex-1 p-2 border border-gray-200 rounded text-sm font-mono text-xs truncate"
+                              placeholder="https://..."
+                            />
+                            <div className="relative">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(e) => handleImageUpload(e, (val) => updateCase(item.id, 'imageUrl', val))}
+                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                    title="点击上传本地图片"
+                                />
+                                <button className="bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-2 rounded border border-gray-300 text-sm">
+                                    <i className="fa-solid fa-upload"></i>
+                                </button>
+                            </div>
+                        </div>
                       </div>
+
                       <div>
-                        <label className="block text-xs text-gray-400 mb-1">视频链接 (URL, 可选)</label>
+                        <label className="block text-xs text-gray-400 mb-1">视频链接 (URL, 选填)</label>
                         <input 
                           type="text" 
                           value={item.videoUrl || ''} 
                           onChange={(e) => updateCase(item.id, 'videoUrl', e.target.value)}
                           className="w-full p-2 border border-gray-200 rounded text-sm font-mono text-xs"
-                          placeholder="https://... (mp4)"
+                          placeholder="https://example.com/video.mp4"
                         />
                       </div>
                     </div>
@@ -221,7 +263,7 @@ const AdminManager: React.FC = () => {
               {data.team.map((member) => (
                 <div key={member.id} className="bg-white p-4 rounded shadow-sm border border-gray-200">
                   <div className="flex justify-between items-start mb-3">
-                     <div className="w-12 h-12 bg-gray-100 rounded-full overflow-hidden shrink-0 mr-3">
+                     <div className="w-12 h-12 bg-gray-100 rounded-full overflow-hidden shrink-0 mr-3 relative">
                         <img src={member.imageUrl} alt="" className="w-full h-full object-cover" />
                      </div>
                      <button onClick={() => deleteTeamMember(member.id)} className="text-red-500 hover:text-red-700 p-1">
@@ -243,13 +285,29 @@ const AdminManager: React.FC = () => {
                       className="w-full p-2 border border-gray-200 rounded text-sm"
                       placeholder="职位/角色"
                     />
-                    <input 
-                      type="text" 
-                      value={member.imageUrl} 
-                      onChange={(e) => updateTeamMember(member.id, 'imageUrl', e.target.value)}
-                      className="w-full p-2 border border-gray-200 rounded text-sm font-mono text-xs"
-                      placeholder="头像链接 URL"
-                    />
+                    
+                    {/* Team Image Upload */}
+                    <div className="flex gap-2">
+                        <input 
+                          type="text" 
+                          value={member.imageUrl} 
+                          onChange={(e) => updateTeamMember(member.id, 'imageUrl', e.target.value)}
+                          className="flex-1 p-2 border border-gray-200 rounded text-sm font-mono text-xs truncate"
+                          placeholder="头像链接"
+                        />
+                        <div className="relative">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => handleImageUpload(e, (val) => updateTeamMember(member.id, 'imageUrl', val))}
+                                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                            />
+                            <button className="bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-2 rounded border border-gray-300 text-sm">
+                                <i className="fa-solid fa-upload"></i>
+                            </button>
+                        </div>
+                    </div>
+
                   </div>
                 </div>
               ))}
@@ -292,33 +350,33 @@ const AdminManager: React.FC = () => {
           {activeTab === 'export' && (
             <div className="space-y-6">
               <div className="bg-blue-50 p-4 rounded border border-blue-100 text-sm text-blue-800">
-                <h3 className="font-bold mb-2">如何保存更改？</h3>
-                <p>您当前的更改保存在浏览器缓存中。</p>
-                <p className="mt-2">要永久保存，请复制下方的代码，覆盖项目中的 <strong>src/data/config.ts</strong> 文件内容。</p>
+                <h3 className="font-bold mb-2">如何永久保存？</h3>
+                <p>您刚才所有的修改（包括上传的图片）目前都保存在浏览器中。</p>
+                <p className="mt-2">请点击下方“复制配置代码”，然后打开项目中的 <strong>src/data/config.ts</strong> 文件，全选并粘贴覆盖，即可永久保存。</p>
               </div>
 
               <div className="relative">
                 <textarea 
                   readOnly 
-                  className="w-full h-64 p-3 bg-gray-800 text-green-400 font-mono text-xs rounded"
+                  className="w-full h-64 p-3 bg-gray-800 text-green-400 font-mono text-xs rounded resize-none"
                   value={`import { AppConfig, CategoryType } from '../types';\n\nexport const APP_DATA: AppConfig = ${JSON.stringify(data, null, 2)};`}
                 />
                 <button 
                   onClick={() => {
                     navigator.clipboard.writeText(`import { AppConfig, CategoryType } from '../types';\n\nexport const APP_DATA: AppConfig = ${JSON.stringify(data, null, 2)};`);
-                    alert('代码已复制！');
+                    alert('代码已复制到剪贴板！请去修改 config.ts 文件。');
                   }}
                   className="absolute top-2 right-2 bg-white text-gray-800 px-3 py-1 rounded text-xs font-bold hover:bg-gray-100 shadow"
                 >
-                  复制代码
+                  复制配置代码
                 </button>
               </div>
 
               <button 
                 onClick={resetData}
-                className="w-full bg-red-600 text-white py-3 rounded hover:bg-red-700"
+                className="w-full bg-red-600 text-white py-3 rounded hover:bg-red-700 transition-colors"
               >
-                重置所有数据 (清除缓存)
+                重置所有数据 (恢复默认)
               </button>
             </div>
           )}
