@@ -1,8 +1,8 @@
 import React from 'react';
-import { useData } from '../context/DataContext';
+import { APP_DATA } from '../data/config';
 
 const Footer: React.FC = () => {
-  const { data } = useData();
+  const data = APP_DATA;
   
   return (
     <footer className="bg-neutral-900 text-white pb-24 pt-12 px-6">
@@ -28,9 +28,6 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-800 pt-6">
            <p className="text-xs text-gray-600">
              © {new Date().getFullYear()} {data.contact.companyName}
-           </p>
-           <p className="text-xs text-gray-600 mt-2">
-             Technical Support: Baota Panel Deployment Ready
            </p>
         </div>
       </div>

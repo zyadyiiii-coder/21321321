@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useData } from '../context/DataContext';
+import { APP_DATA } from '../data/config';
 import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
-  const { data } = useData();
+  const data = APP_DATA;
   
   return (
     <div className="pb-10">
@@ -64,19 +64,21 @@ const Home: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="text-center"
               >
-                <div className="aspect-[3/4] rounded-lg overflow-hidden mb-3 shadow-md relative group">
-                   <img 
-                     src={member.imageUrl} 
-                     alt={member.role} 
-                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                   />
-                   {/* Red overlay on hover similar to PDF style */}
-                   <div className="absolute inset-0 bg-brand-red/80 opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                </div>
-                <h4 className="text-sm font-bold text-gray-800">{member.name}</h4>
-                <p className="text-xs text-brand-red font-medium mt-1">{member.role}</p>
+                <Link to={`/team/${member.id}`} className="block group">
+                  <div className="aspect-[3/4] rounded-lg overflow-hidden mb-3 shadow-md relative">
+                    <img 
+                      src={member.imageUrl} 
+                      alt={member.role} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-brand-red/80 opacity-0 group-hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="text-white border border-white px-3 py-1 text-xs">查看详情</span>
+                    </div>
+                  </div>
+                  {member.name && <h4 className="text-sm font-bold text-gray-800 text-center">{member.name}</h4>}
+                  <p className="text-xs text-brand-red font-medium mt-1 text-center">{member.role}</p>
+                </Link>
               </motion.div>
             ))}
           </div>

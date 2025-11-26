@@ -1,11 +1,11 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
-import { useData } from '../context/DataContext';
+import { useParams, Navigate, Link } from 'react-router-dom';
+import { APP_DATA } from '../data/config';
 import { motion } from 'framer-motion';
 
 const CategoryDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { data } = useData();
+  const data = APP_DATA;
   const category = data.services.find(s => s.id === id);
 
   if (!category) {
@@ -32,7 +32,7 @@ const CategoryDetail: React.FC = () => {
                 <p>暂无案例展示</p>
             </div>
         ) : (
-            <div className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {category.items.map((item, index) => (
                 <motion.div
                 key={item.id}
@@ -40,45 +40,40 @@ const CategoryDetail: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
                 >
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                    <div className="relative group">
-                        {/* Logic to display Video or Image */}
-                        {item.videoUrl ? (
-                          <div className="w-full aspect-video bg-black">
-                            <video 
-                              controls 
-                              className="w-full h-full" 
-                              poster={item.imageUrl}
-                              preload="metadata"
-                            >
-                              <source src={item.videoUrl} type="video/mp4" />
-                              Your browser does not support the video tag.
-                            </video>
+                <Link to={`/project/${item.id}`} className="block h-full">
+                  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
+                      <div className="relative group aspect-video">
+                          <img 
+                              src={item.imageUrl} 
+                              alt={item.title} 
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                              loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                          
+                          {/* Play Icon for Video Items */}
+                          {item.videoUrl && (
+                             <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+                                   <i className="fa-solid fa-play text-brand-red ml-1"></i>
+                                </div>
+                             </div>
+                          )}
+                      </div>
+                      <div className="p-4 flex-1 flex flex-col">
+                          <div className="flex items-start justify-between mb-2">
+                            <h3 className="font-bold text-gray-800 text-lg leading-tight line-clamp-2">{item.title}</h3>
                           </div>
-                        ) : (
-                          <>
-                            <img 
-                                src={item.imageUrl} 
-                                alt={item.title} 
-                                className="w-full h-auto object-cover"
-                                loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
-                          </>
-                        )}
-                    </div>
-                    <div className="p-4">
-                        <div className="flex items-center justify-between mb-2">
-                           <h3 className="font-bold text-gray-800 text-lg leading-tight">{item.title}</h3>
-                           {item.videoUrl && (
-                             <span className="text-xs font-bold text-brand-red border border-brand-red px-1.5 py-0.5 rounded">VIDEO</span>
-                           )}
-                        </div>
-                        {item.description && (
-                            <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
-                        )}
-                    </div>
-                </div>
+                          {item.description && (
+                              <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-2">{item.description}</p>
+                          )}
+                          <div className="mt-auto pt-2 flex items-center text-xs text-brand-red font-medium">
+                             <span>查看详情</span>
+                             <i className="fa-solid fa-arrow-right ml-1"></i>
+                          </div>
+                      </div>
+                  </div>
+                </Link>
                 </motion.div>
             ))}
             </div>

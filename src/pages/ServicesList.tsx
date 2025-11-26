@@ -1,10 +1,10 @@
 import React from 'react';
-import { useData } from '../context/DataContext';
+import { APP_DATA } from '../data/config';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const ServicesList: React.FC = () => {
-  const { data } = useData();
+  const data = APP_DATA;
   
   return (
     <div className="min-h-screen bg-white pb-10">

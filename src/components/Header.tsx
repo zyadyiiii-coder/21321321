@@ -1,9 +1,9 @@
 import React from 'react';
-import { useData } from '../context/DataContext';
+import { APP_DATA } from '../data/config';
 import { Link, useLocation } from 'react-router-dom';
 
 const Header: React.FC = () => {
-  const { data } = useData();
+  const data = APP_DATA;
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     <header className="sticky top-0 z-50 bg-brand-red text-white shadow-md">
       <div className="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          {/* Logo Placeholder - You can replace with <img src="..." /> */}
+          {/* Logo Placeholder */}
           <div className="w-8 h-8 bg-white text-brand-red rounded-full flex items-center justify-center font-bold text-lg border-2 border-white">
             译
           </div>

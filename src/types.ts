@@ -13,6 +13,7 @@ export interface PortfolioItem {
   imageUrl: string;
   videoUrl?: string; // URL to the video file (mp4)
   tags?: string[];
+  gallery?: string[]; // Extra images for the detail page
 }
 
 export interface ServiceCategory {
@@ -29,6 +30,8 @@ export interface TeamMember {
   name?: string; // Optional, can use role as main identifier based on PDF
   role: string;
   imageUrl: string;
+  bio?: string; // Detailed introduction
+  works?: string[]; // Array of image URLs showing their work
 }
 
 export interface ContactInfo {

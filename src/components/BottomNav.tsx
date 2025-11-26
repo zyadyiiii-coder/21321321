@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useData } from '../context/DataContext';
+import { APP_DATA } from '../data/config';
 
 const BottomNav: React.FC = () => {
-  const { data } = useData();
+  const data = APP_DATA;
   const location = useLocation();
 
   const handleScrollToTop = () => {

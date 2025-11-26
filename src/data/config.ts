@@ -3,10 +3,13 @@ import { AppConfig, CategoryType } from '../types';
 // ==========================================
 // 配置文件 - 在此处修改内容 (CONFIGURATION)
 // ==========================================
-// 如何修改图片/视频：
-// 1. 将您的图片或视频上传到服务器、对象存储或图床。
-// 2. 获取文件的 URL (例如: https://example.com/my-image.jpg)。
-// 3. 将下方的 imageUrl 或 videoUrl 替换为您的链接。
+// 修改说明：
+// 1. 修改文字：直接修改引号 '' 里的内容。
+// 2. 修改图片：将 imageUrl 换成您的图片链接。
+// 3. 修改视频：将 videoUrl 换成您的视频链接 (.mp4)。
+//    注意：如果有 videoUrl，图片(imageUrl)会作为视频封面显示。
+//          如果没有 videoUrl (留空 "")，则只显示图片。
+// 4. 修改图集：在 gallery (案例) 或 works (人员) 中添加更多图片链接，格式为 ['链接1', '链接2']
 // ==========================================
 
 export const APP_DATA: AppConfig = {
@@ -15,50 +18,76 @@ export const APP_DATA: AppConfig = {
   description: "贵州译道佳华文化发展有限公司，前身是一家经营10多年的品牌设计工作室。现以视觉传达为核心，协助各政府、机构、企业宣传推广的创意型文化发展公司。旗下拥有【醒狮影视】&【龙予成林音乐工作室】影音创作组织架构。",
   contact: {
     companyName: "贵州译道佳华文化发展有限公司",
-    phone: ["1598519888", "13984832580"],
+    phone: ["15985194981", "13984832580"],
     address: "贵州省贵阳市"
   },
-  // 核心人员简介 (Core Team - Page 6 of PDF)
+  // 核心人员简介 (Core Team)
   team: [
     {
       id: "t1",
       role: "导演 / 品牌设计师 / 主理人",
-      imageUrl: "https://image.baidu.com/search/detail?adpicid=0&b_applid=11327985436057787050&bdtype=14&commodity=&copyright=&cs=3285821841%2C3336658481&di=58720257&fr=click-pic&fromurl=https%253A%252F%252Fuland.taobao.com%252Fitem%252Fedetail%253Fid%253DQ22ygn2cQtBW6kmAevTWvzSatQ-0zgbP4nH57OygY0Oinw&gsm=1e&hd=&height=0&hot=&ic=&ie=utf-8&imgformat=&imgratio=&imgspn=0&is=4035204065%2C3507120249&isImgSet=&latest=&lid=e6a89e2200c0ea73&lm=&objurl=https%253A%252F%252Fimg.alicdn.com%252Fbao%252Fuploaded%252Fi2%252F2218969432076%252FO1CN01p6PXMh1RCrHbrxRb8_%2521%25214611686018427379724-0-item_pic.jpg&os=4035204065%2C3507120249&pd=image_content&pi=0&pn=26&rn=1&simid=3285821841%2C3336658481&tn=baiduimagedetail&width=0&word=BMD&z=" // 请替换为人员照片链接
+      name: "主理人",
+      imageUrl: "https://picsum.photos/400/500?random=t1",
+      bio: "拥有超过10年的品牌设计与影视执导经验，擅长将视觉美学与品牌故事深度融合。曾主导多个大型政府及企业项目的品牌升级与宣传片拍摄。",
+      works: [
+         "https://picsum.photos/800/600?random=t1-1",
+         "https://picsum.photos/800/600?random=t1-2",
+         "https://picsum.photos/800/600?random=t1-3"
+      ]
     },
     {
       id: "t2",
       role: "导演 / 摄影指导 / 航拍 / 主理人",
-      imageUrl: "https://www.freepik.com/free-vector/colorful-gradient-number-23-logo-design_57141160.htm"
+      name: "摄影指导",
+      imageUrl: "https://picsum.photos/400/500?random=t2",
+      bio: "资深摄影指导，精通各类电影摄影机及航拍设备。镜头语言丰富，擅长捕捉光影瞬间，为影片赋予独特的视觉质感。",
+      works: [
+         "https://picsum.photos/800/600?random=t2-1",
+         "https://picsum.photos/800/600?random=t2-2"
+      ]
     },
     {
       id: "t3",
       role: "独立音乐制作人 / 主理人",
-      imageUrl: "https://picsum.photos/400/500?random=t3"
+      name: "音乐总监",
+      imageUrl: "https://picsum.photos/400/500?random=t3",
+      bio: "龙予成林音乐工作室创始人，专注于影视配乐、广告编曲及原创音乐制作。用声音诠释画面，提升作品的情感张力。",
+      works: []
     },
     {
       id: "t4",
       role: "剪辑指导 / 灯光师",
-      imageUrl: "https://picsum.photos/400/500?random=t4"
+      imageUrl: "https://picsum.photos/400/500?random=t4",
+      bio: "后期制作的核心力量，对节奏与光影有独到的见解。",
+      works: []
     },
     {
       id: "t5",
       role: "剪辑师 / 特效包装师",
-      imageUrl: "https://picsum.photos/400/500?random=t5"
+      imageUrl: "https://picsum.photos/400/500?random=t5",
+      bio: "精通特效合成与动态图形设计，为视频增添酷炫的视觉效果。",
+      works: []
     },
     {
       id: "t6",
       role: "物料负责人",
-      imageUrl: "https://picsum.photos/400/500?random=t6"
+      imageUrl: "https://picsum.photos/400/500?random=t6",
+      bio: "负责各类宣传物料的统筹与落地，确保设计还原度。",
+      works: []
     },
     {
       id: "t7",
       role: "策划师 / 文案",
-      imageUrl: "https://picsum.photos/400/500?random=t7"
+      imageUrl: "https://picsum.photos/400/500?random=t7",
+      bio: "创意的大脑，用文字构建品牌灵魂。",
+      works: []
     },
     {
       id: "t8",
       role: "搭建及美术指导",
-      imageUrl: "https://picsum.photos/400/500?random=t8"
+      imageUrl: "https://picsum.photos/400/500?random=t8",
+      bio: "把控现场搭建效果与美术风格，打造沉浸式空间体验。",
+      works: []
     }
   ],
   services: [
@@ -72,44 +101,62 @@ export const APP_DATA: AppConfig = {
         {
           id: "b1",
           title: "未来方舟-甜蜜小镇",
-          description: "小区对外形象VI设计及施工图展示",
-          imageUrl: "https://picsum.photos/800/600?random=1"
+          description: "小区对外形象VI设计及施工图展示，打造充满幸福感的城市社区。",
+          imageUrl: "https://picsum.photos/800/600?random=1",
+          videoUrl: "",
+          gallery: [
+             "https://picsum.photos/800/600?random=1-1",
+             "https://picsum.photos/800/600?random=1-2",
+             "https://picsum.photos/800/600?random=1-3"
+          ]
         },
         {
           id: "b2",
           title: "贵州省图书馆“贵图猫”",
-          description: "形象IP设计规划",
-          imageUrl: "https://picsum.photos/800/600?random=2"
+          description: "形象IP设计规划，结合地域文化与阅读属性，打造亲民的IP形象。",
+          imageUrl: "https://picsum.photos/800/600?random=2",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "b3",
           title: "工商银行中西支行",
-          description: "专属VI设计",
-          imageUrl: "https://picsum.photos/800/600?random=3"
+          description: "专属VI设计，体现金融机构的专业与稳重。",
+          imageUrl: "https://picsum.photos/800/600?random=3",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "b4",
           title: "健康基地VI全案",
-          description: "设计规划及实景落地",
-          imageUrl: "https://picsum.photos/800/600?random=4"
+          description: "设计规划及实景落地，营造健康、舒适的视觉环境。",
+          imageUrl: "https://picsum.photos/800/600?random=4",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "b5",
           title: "党建规划设计",
-          description: "贵州农商银行党建整改事项及宣传物料规划",
-          imageUrl: "https://picsum.photos/800/600?random=5"
+          description: "贵州农商银行党建整改事项及宣传物料规划。",
+          imageUrl: "https://picsum.photos/800/600?random=5",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "b6",
           title: "同济堂",
-          description: "物料设计规划及安装",
-          imageUrl: "https://picsum.photos/800/600?random=6"
+          description: "物料设计规划及安装，传承中医文化。",
+          imageUrl: "https://picsum.photos/800/600?random=6",
+          videoUrl: "",
+          gallery: []
         },
          {
           id: "b7",
           title: "抗疫公益海报",
-          description: "人民战疫，武汉加油 - 登上贵州动静APP",
-          imageUrl: "https://picsum.photos/800/1000?random=7" // Portrait
+          description: "人民战疫，武汉加油 - 登上贵州动静APP。",
+          imageUrl: "https://picsum.photos/800/1000?random=7",
+          videoUrl: "",
+          gallery: []
         }
       ]
     },
@@ -122,41 +169,54 @@ export const APP_DATA: AppConfig = {
       items: [
         {
           id: "v1",
-          title: "醒狮影视",
-          description: "专业级前后期影视设备展示",
-          imageUrl: "https://image.baidu.com/search/detail?adpicid=0&b_applid=11327985436057787050&bdtype=14&commodity=&copyright=&cs=4240266776%2C1707807648&di=58720257&fr=click-pic&fromurl=https%253A%252F%252Fuland.taobao.com%252Fitem%252Fedetail%253Fid%253DZQNbDBrF6tvXdA3sJ8XuVt6-N9n2xdJInqYvddJOcpG&gsm=1e&hd=&height=0&hot=&ic=&ie=utf-8&imgformat=&imgratio=&imgspn=0&is=2666220533%2C3915108298&isImgSet=&latest=&lid=e6a89e2200c0ea73&lm=&objurl=https%253A%252F%252Fimg.alicdn.com%252Fbao%252Fuploaded%252Fi4%252F2201413895906%252FO1CN01t6OQcw1tUzycKk4Wl_%2521%25212201413895906.jpg&os=2666220533%2C3915108298&pd=image_content&pi=0&pn=15&rn=1&simid=4240266776%2C1707807648&tn=baiduimagedetail&width=0&word=BMD&z=",
-          videoUrl: "https://www.youtube.com/watch?v=SWsi3P8XsOA" // 示例视频链接，请替换为您的 .mp4 链接
+          title: "醒狮影视 - 设备展示",
+          description: "专业级前后期影视设备展示（含视频演示），配备RED摄影机、航拍器及全套灯光组。",
+          imageUrl: "https://picsum.photos/800/600?random=10",
+          videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+          gallery: [
+            "https://picsum.photos/800/600?random=10-1",
+            "https://picsum.photos/800/600?random=10-2"
+          ]
         },
         {
           id: "v2",
           title: "中国南方电网研究院",
-          description: "“中国十大国之重器”——伏羲芯片宣传片拍摄",
+          description: "“中国十大国之重器”——伏羲芯片宣传片拍摄，展现科技硬实力。",
           imageUrl: "https://picsum.photos/800/600?random=11",
-          videoUrl: "" // 如果留空，则只显示图片
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "v3",
           title: "构皮滩水电站通航工程",
-          description: "宣传片视屏拍摄及制作",
-          imageUrl: "https://picsum.photos/800/600?random=12"
+          description: "宣传片视屏拍摄及制作，记录大国工程的宏伟时刻。",
+          imageUrl: "https://picsum.photos/800/600?random=12",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "v4",
           title: "2024监狱微电影",
-          description: "现场拍摄花絮",
-          imageUrl: "https://picsum.photos/800/600?random=13"
+          description: "现场拍摄花絮，讲述高墙内的感人故事。",
+          imageUrl: "https://picsum.photos/800/600?random=13",
+          videoUrl: "",
+          gallery: []
         },
          {
           id: "v5",
           title: "贵州苏宁创维新品",
-          description: "拍摄及后期",
-          imageUrl: "https://picsum.photos/800/600?random=14"
+          description: "拍摄及后期，商业广告片制作。",
+          imageUrl: "https://picsum.photos/800/600?random=14",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "v6",
           title: "《军号·1979》",
-          description: "纪录片拍摄及后期",
-          imageUrl: "https://picsum.photos/800/600?random=15"
+          description: "纪录片拍摄及后期，铭记历史，致敬英雄。",
+          imageUrl: "https://picsum.photos/800/600?random=15",
+          videoUrl: "",
+          gallery: []
         }
       ]
     },
@@ -170,14 +230,18 @@ export const APP_DATA: AppConfig = {
         {
           id: "m1",
           title: "音乐工作室",
-          description: "专业录音与编曲设备",
-          imageUrl: "https://picsum.photos/800/600?random=20"
+          description: "专业录音与编曲设备，提供高品质声音制作环境。",
+          imageUrl: "https://picsum.photos/800/600?random=20",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "m2",
           title: "企业专属歌曲",
-          description: "为企业定制品牌主题曲",
-          imageUrl: "https://picsum.photos/800/600?random=21"
+          description: "为企业定制品牌主题曲，增强团队凝聚力与品牌识别度。",
+          imageUrl: "https://picsum.photos/800/600?random=21",
+          videoUrl: "",
+          gallery: []
         }
       ]
     },
@@ -191,32 +255,42 @@ export const APP_DATA: AppConfig = {
         {
           id: "e1",
           title: "贵州茶叶营销发展论坛",
-          description: "线下活动搭建项目展示",
-          imageUrl: "https://picsum.photos/800/600?random=30"
+          description: "线下活动搭建项目展示，专业舞美灯光音响支持。",
+          imageUrl: "https://picsum.photos/800/600?random=30",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "e2",
           title: "开业典例",
-          description: "醒狮表演与舞台搭建",
-          imageUrl: "https://picsum.photos/800/600?random=31"
+          description: "醒狮表演与舞台搭建，营造热闹喜庆的开业氛围。",
+          imageUrl: "https://picsum.photos/800/600?random=31",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "e3",
           title: "2018生态文明会议",
-          description: "主会场搭建与执行",
-          imageUrl: "https://picsum.photos/800/600?random=32"
+          description: "主会场搭建与执行，高标准会议服务。",
+          imageUrl: "https://picsum.photos/800/600?random=32",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "e4",
           title: "阳光科密25周年",
-          description: "贵阳年会现场搭建",
-          imageUrl: "https://picsum.photos/800/600?random=33"
+          description: "贵阳年会现场搭建，全流程活动执行。",
+          imageUrl: "https://picsum.photos/800/600?random=33",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "e5",
           title: "中国国际大数据产业博览会",
-          description: "26个展位的设计、搭建",
-          imageUrl: "https://picsum.photos/800/600?random=34"
+          description: "26个展位的设计、搭建，展示科技魅力。",
+          imageUrl: "https://picsum.photos/800/600?random=34",
+          videoUrl: "",
+          gallery: []
         }
       ]
     },
@@ -230,20 +304,26 @@ export const APP_DATA: AppConfig = {
         {
           id: "p1",
           title: "物料厂房实景",
-          description: "大型喷绘机、UV机设备展示",
-          imageUrl: "https://picsum.photos/800/600?random=40"
+          description: "大型喷绘机、UV机设备展示，自有工厂，品质可控。",
+          imageUrl: "https://picsum.photos/800/600?random=40",
+          videoUrl: "",
+          gallery: []
         },
         {
           id: "p2",
           title: "印刷厂房实景",
-          description: "批量印刷生产线",
-          imageUrl: "https://picsum.photos/800/600?random=41"
+          description: "批量印刷生产线，满足大批量订单需求。",
+          imageUrl: "https://picsum.photos/800/600?random=41",
+          videoUrl: "",
+          gallery: []
         },
          {
           id: "p3",
           title: "党建文化墙",
-          description: "亚克力、PVC雕刻与安装",
-          imageUrl: "https://picsum.photos/800/600?random=42"
+          description: "亚克力、PVC雕刻与安装，专业施工团队。",
+          imageUrl: "https://picsum.photos/800/600?random=42",
+          videoUrl: "",
+          gallery: []
         }
       ]
     }
