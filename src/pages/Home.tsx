@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     <div className="pb-10">
       {/* Hero Section */}
       <div 
-        className="relative h-[60vh] overflow-hidden flex flex-col items-center justify-center text-center text-white p-6 transition-colors duration-500"
+        className="relative h-[65vh] overflow-hidden flex flex-col items-center justify-center text-center text-white p-6 transition-colors duration-500"
         style={heroStyle}
       >
         {/* Texture overlay only if no image */}
@@ -40,12 +40,33 @@ const Home: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="z-10"
+          className="z-10 w-full"
         >
           <h1 className="text-6xl font-black mb-2 font-sans italic tracking-tighter">YIDAO</h1>
           <h2 className="text-2xl font-light tracking-[0.5em] mb-6">译道佳华</h2>
           <div className="w-16 h-1 bg-white mx-auto mb-6"></div>
-          <p className="text-xl font-medium">{data.slogan}</p>
+          <p className="text-xl font-medium mb-12">{data.slogan}</p>
+
+          {/* 3 Brand Logos in Hero Section */}
+          {data.brandLogos && data.brandLogos.length > 0 && (
+            <div className="flex flex-wrap justify-center items-center gap-6 mt-8">
+              {data.brandLogos.map((brand, idx) => (
+                 <motion.div 
+                    key={brand.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 + idx * 0.2 }}
+                 >
+                   <img 
+                     src={brand.imageUrl} 
+                     alt={brand.name} 
+                     className="h-12 md:h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+                     title={brand.name}
+                   />
+                 </motion.div>
+              ))}
+            </div>
+          )}
         </motion.div>
       </div>
 
@@ -192,7 +213,7 @@ const Home: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-xl font-bold text-gray-800 mb-8">旗下品牌</h3>
             <div className="flex flex-wrap justify-center gap-6">
-                <div className="border border-gray-200 rounded-lg p-6 w-full md:w-5/12 flex items-center gap-4 shadow-sm">
+                <div className="border border-gray-200 rounded-lg p-6 w-full md:w-5/12 flex items-center gap-4 shadow-sm hover:border-brand-red transition-colors">
                     <div className="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center text-white shrink-0">
                         <i className="fa-solid fa-dragon"></i>
                     </div>
@@ -201,7 +222,7 @@ const Home: React.FC = () => {
                         <p className="text-xs text-gray-500">The Awaking Lion</p>
                     </div>
                 </div>
-                <div className="border border-gray-200 rounded-lg p-6 w-full md:w-5/12 flex items-center gap-4 shadow-sm">
+                <div className="border border-gray-200 rounded-lg p-6 w-full md:w-5/12 flex items-center gap-4 shadow-sm hover:border-brand-red transition-colors">
                     <div className="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center text-white shrink-0">
                         <i className="fa-solid fa-music"></i>
                     </div>

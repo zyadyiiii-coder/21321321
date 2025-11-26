@@ -13,6 +13,7 @@ import { AppConfig, CategoryType } from '../types';
 // 4. 修改音频：将 audioUrl 换成您的音频链接 (.mp3)。
 // 5. 修改图集：在 gallery (案例) 或 works (人员) 中添加更多图片链接。
 // 6. 修改首页背景：在 heroConfig 中设置 backgroundColor (颜色) 或 backgroundImageUrl (图片)。
+// 7. 修改品牌Logo：在 brandLogos 中更换为您公司的 3 个 Logo 图片。
 // ==========================================
 
 export const APP_DATA: AppConfig = {
@@ -28,6 +29,13 @@ export const APP_DATA: AppConfig = {
     // 背景图片 (如果您想用图片代替红色背景，请取消下面这行的注释并填入链接)
     // backgroundImageUrl: 'https://picsum.photos/1920/1080', 
   },
+
+  // 公司的 3 个品牌 Logo (显示在首页和页尾)
+  brandLogos: [
+    { id: 'l1', name: '译道佳华', imageUrl: 'https://via.placeholder.com/150x80/ffffff/b91c1c?text=YIDAO' },
+    { id: 'l2', name: '醒狮影视', imageUrl: 'https://via.placeholder.com/150x80/ffffff/b91c1c?text=LION' },
+    { id: 'l3', name: '龙予成林', imageUrl: 'https://via.placeholder.com/150x80/ffffff/b91c1c?text=MUSIC' }
+  ],
 
   contact: {
     companyName: "贵州译道佳华文化发展有限公司",

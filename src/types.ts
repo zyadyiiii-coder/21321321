@@ -42,6 +42,12 @@ export interface Partner {
   logoUrl: string;
 }
 
+export interface BrandLogo {
+  id: string;
+  name: string;
+  imageUrl: string;
+}
+
 export interface ContactInfo {
   phone: string[];
   companyName: string;
@@ -53,6 +59,7 @@ export interface AppConfig {
   slogan: string;
   description: string;
   contact: ContactInfo;
+  brandLogos: BrandLogo[]; // Added brand logos section
   services: ServiceCategory[];
   team: TeamMember[];
   partners: Partner[]; // Added partners section
