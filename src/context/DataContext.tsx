@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { AppConfig } from '../types';
 import { APP_DATA } from '../data/config';
 
