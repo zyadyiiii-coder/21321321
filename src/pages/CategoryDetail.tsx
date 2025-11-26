@@ -1,11 +1,12 @@
+
 import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 import { motion } from 'framer-motion';
 
 const CategoryDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const data = APP_DATA;
+  const { data } = useData();
   const category = data.services.find(s => s.id === id);
 
   if (!category) {
@@ -16,8 +17,12 @@ const CategoryDetail: React.FC = () => {
     <div className="min-h-screen bg-gray-50 pb-10">
       {/* Header Banner */}
       <div className="bg-brand-red text-white py-12 px-6 text-center rounded-b-[2rem] shadow-lg mb-8">
-        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-           <i className={`fa-solid ${category.icon} text-3xl`}></i>
+        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm overflow-hidden">
+           {category.iconUrl ? (
+             <img src={category.iconUrl} alt={category.title} className="w-10 h-10 object-contain brightness-0 invert" />
+           ) : (
+             <i className={`fa-solid ${category.icon} text-3xl`}></i>
+           )}
         </div>
         <h1 className="text-3xl font-bold mb-2">{category.title}</h1>
         <p className="opacity-80 text-sm uppercase tracking-wider">{category.subtitle}</p>
@@ -55,7 +60,20 @@ const CategoryDetail: React.FC = () => {
                           {item.videoUrl && (
                              <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
-                                   <i className="fa-solid fa-play text-brand-red ml-1"></i>
+                                   {data.uiIcons?.play ? (
+                                      <img src={data.uiIcons.play} alt="Play" className="w-6 h-6 object-contain" />
+                                   ) : (
+                                      <i className="fa-solid fa-play text-brand-red ml-1"></i>
+                                   )}
+                                </div>
+                             </div>
+                          )}
+
+                          {/* Headphone Icon for Music Items */}
+                          {item.audioUrl && !item.videoUrl && (
+                             <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+                                   <i className="fa-solid fa-headphones text-brand-red"></i>
                                 </div>
                              </div>
                           )}

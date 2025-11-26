@@ -1,23 +1,32 @@
+
 import React from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 import { motion } from 'framer-motion';
 
 const TeamDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const member = APP_DATA.team.find(m => m.id === id);
+  const { data } = useData();
+  const member = data.team.find(m => m.id === id);
 
   if (!member) {
     return <Navigate to="/" />;
   }
+
+  // Helper for icons
+  const getIcon = (name: string, fallback: React.ReactNode) => {
+    return data.uiIcons?.[name] ? (
+        <img src={data.uiIcons[name]} className="w-full h-full object-contain" />
+    ) : fallback;
+  };
 
   return (
     <div className="min-h-screen bg-white pb-20">
        {/* Top Navigation */}
        <div className="absolute top-0 left-0 z-40 p-4">
           <button onClick={() => navigate(-1)} className="w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur rounded-full text-gray-800 hover:text-brand-red shadow-sm">
-             <i className="fa-solid fa-arrow-left"></i>
+             {getIcon('back', <i className="fa-solid fa-arrow-left"></i>)}
           </button>
        </div>
 
@@ -39,7 +48,7 @@ const TeamDetail: React.FC = () => {
              
              <div className="w-12 h-1 bg-gray-200 mb-6"></div>
              
-             <div className="text-gray-600 leading-loose text-justify mb-10">
+             <div className="text-gray-600 leading-loose text-justify mb-10 whitespace-pre-line">
                 {member.bio || "暂无详细介绍。"}
              </div>
 

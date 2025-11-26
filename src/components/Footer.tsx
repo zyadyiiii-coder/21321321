@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 
 const Footer: React.FC = () => {
-  const data = APP_DATA;
+  const { data } = useData();
   
   return (
     <footer className="bg-neutral-900 text-white pb-24 pt-12 px-6">

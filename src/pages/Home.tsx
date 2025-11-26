@@ -1,11 +1,11 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
-  const data = APP_DATA;
+  const { data } = useData();
   
   // Logic for hero background customization
   const hasBgImage = !!data.heroConfig?.backgroundImage;
@@ -192,7 +192,11 @@ const Home: React.FC = () => {
                          <div className="w-full h-full bg-gradient-to-br from-brand-red to-brand-dark"></div>
                        )}
                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                          <i className={`fa-solid ${service.icon} text-4xl text-white opacity-80`}></i>
+                          {service.iconUrl ? (
+                             <img src={service.iconUrl} alt={service.title} className="w-12 h-12 object-contain brightness-0 invert" />
+                          ) : (
+                             <i className={`fa-solid ${service.icon} text-4xl text-white opacity-80`}></i>
+                          )}
                        </div>
                     </div>
                     <div className="p-6">
@@ -213,24 +217,21 @@ const Home: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-xl font-bold text-gray-800 mb-8">旗下品牌</h3>
             <div className="flex flex-wrap justify-center gap-6">
-                <div className="border border-gray-200 rounded-lg p-6 w-full md:w-5/12 flex items-center gap-4 shadow-sm hover:border-brand-red transition-colors">
-                    <div className="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center text-white shrink-0">
-                        <i className="fa-solid fa-dragon"></i>
+                {data.subBrands && data.subBrands.map((brand) => (
+                    <div key={brand.id} className="border border-gray-200 rounded-lg p-6 w-full md:w-5/12 flex items-center gap-4 shadow-sm hover:border-brand-red transition-colors">
+                        <div className="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center text-white shrink-0 overflow-hidden">
+                            {brand.iconUrl ? (
+                                <img src={brand.iconUrl} alt={brand.title} className="w-full h-full object-cover" />
+                            ) : (
+                                <i className={`fa-solid ${brand.icon} text-xl`}></i>
+                            )}
+                        </div>
+                        <div className="text-left">
+                            <h4 className="font-bold">{brand.title}</h4>
+                            <p className="text-xs text-gray-500">{brand.subtitle}</p>
+                        </div>
                     </div>
-                    <div className="text-left">
-                        <h4 className="font-bold">醒狮影视</h4>
-                        <p className="text-xs text-gray-500">The Awaking Lion</p>
-                    </div>
-                </div>
-                <div className="border border-gray-200 rounded-lg p-6 w-full md:w-5/12 flex items-center gap-4 shadow-sm hover:border-brand-red transition-colors">
-                    <div className="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center text-white shrink-0">
-                        <i className="fa-solid fa-music"></i>
-                    </div>
-                    <div className="text-left">
-                        <h4 className="font-bold">龙予成林</h4>
-                        <p className="text-xs text-gray-500">Music Studio</p>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
       </section>

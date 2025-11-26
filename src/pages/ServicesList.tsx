@@ -1,10 +1,11 @@
+
 import React from 'react';
-import { APP_DATA } from '../data/config';
+import { useData } from '../context/DataContext';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const ServicesList: React.FC = () => {
-  const data = APP_DATA;
+  const { data } = useData();
   
   return (
     <div className="min-h-screen bg-white pb-10">
@@ -26,8 +27,12 @@ const ServicesList: React.FC = () => {
                 to={`/services/${service.id}`}
                 className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100 active:bg-gray-100 transition-colors"
               >
-                <div className="w-16 h-16 rounded-lg bg-white shrink-0 flex items-center justify-center shadow-sm text-brand-red text-2xl">
-                    <i className={`fa-solid ${service.icon}`}></i>
+                <div className="w-16 h-16 rounded-lg bg-white shrink-0 flex items-center justify-center shadow-sm text-brand-red text-2xl overflow-hidden">
+                    {service.iconUrl ? (
+                       <img src={service.iconUrl} alt={service.title} className="w-10 h-10 object-contain" />
+                    ) : (
+                       <i className={`fa-solid ${service.icon}`}></i>
+                    )}
                 </div>
                 <div className="ml-4 flex-1">
                     <h3 className="font-bold text-gray-800">{service.title}</h3>
