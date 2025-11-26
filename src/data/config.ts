@@ -30,7 +30,10 @@ export const APP_DATA: AppConfig = {
     // backgroundImageUrl: 'https://picsum.photos/1920/1080', 
   },
 
-  // 公司的 3 个品牌 Logo (显示在首页和页尾)
+  // 网站背景音乐 (Background Music)
+  // backgroundMusic: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+
+  // 公司的 3 个品牌 Logo (显示在首页白色区域和页尾)
   brandLogos: [
     { id: 'l1', name: '译道佳华', imageUrl: 'https://via.placeholder.com/150x80/ffffff/b91c1c?text=YIDAO' },
     { id: 'l2', name: '醒狮影视', imageUrl: 'https://via.placeholder.com/150x80/ffffff/b91c1c?text=LION' },

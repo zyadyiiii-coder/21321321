@@ -306,6 +306,7 @@ const AdminFloatingPanel: React.FC = () => {
 
   const copyConfig = () => {
     const jsonStr = JSON.stringify(data, null, 2);
+    // Updated template: Use correct relative path '../types'
     const fileContent = `
 import { AppConfig, CategoryType } from '../types';
 
@@ -313,7 +314,7 @@ import { AppConfig, CategoryType } from '../types';
 // 配置文件 - 由管理面板生成
 // ==========================================
 
-export const APP_DATA: AppConfig = ${jsonStr};
+export const APP_DATA: AppConfig = ${jsonStr} as unknown as AppConfig;
     `;
     navigator.clipboard.writeText(fileContent).then(() => alert("配置代码已复制！请覆盖 src/data/config.ts 文件。"));
   };
