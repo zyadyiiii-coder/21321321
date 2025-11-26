@@ -23,6 +23,7 @@ export interface ServiceCategory {
   title: string;
   subtitle: string;
   icon: string; // FontAwesome class
+  iconUrl?: string; // Custom icon image
   description: string;
   items: PortfolioItem[];
 }
@@ -48,6 +49,14 @@ export interface BrandLogo {
   imageUrl: string;
 }
 
+export interface SubBrand {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon?: string;
+  iconUrl?: string;
+}
+
 export interface ContactInfo {
   phone: string[];
   companyName: string;
@@ -67,4 +76,6 @@ export interface AppConfig {
     backgroundImage?: string;
     backgroundColor?: string;
   };
+  subBrands?: SubBrand[]; // Optional sub-brands
+  uiIcons?: Record<string, string>; // Custom UI icons map
 }
