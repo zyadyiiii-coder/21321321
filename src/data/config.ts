@@ -19,7 +19,7 @@ import { AppConfig, CategoryType } from '../types';
 export const APP_DATA: AppConfig = {
   companyName: "译道佳华",
   slogan: "为热爱而生 · 为您而来",
-  description: "贵州译道佳华文化发展有限公司，前身是一家经营10多年的品牌设计工作室。现以视觉传达为核心，协助各政府、机构、企业宣传推广的创意型文化发展公司。旗下拥有【醒狮影视】&【龙予成林音乐工作室】影音创作组织架构。",
+  description: "贵州译道佳华文化发展有限公司，前身是一家经营10多年的品牌设计与影视工作室。现以视觉传达为核心，协助各政府、机构、企业宣传推广的创意型文化发展公司。旗下拥有【醒狮影视】&【龙予成林音乐工作室】影音创作组织架构。",
   
   // 首页首屏背景配置 (First Page Background)
   heroConfig: {
@@ -361,6 +361,31 @@ export const APP_DATA: AppConfig = {
           title: "党建文化墙",
           description: "亚克力、PVC雕刻与安装，专业施工团队。",
           imageUrl: "https://picsum.photos/800/600?random=42",
+          videoUrl: "",
+          gallery: []
+        }
+      ]
+    },
+    {
+      id: CategoryType.LECTURE,
+      title: "授课&荣誉",
+      subtitle: "Lectures & Honors",
+      icon: "fa-graduation-cap",
+      description: "获得各大学、职业学院、小学邀请授课分享，及各类奖项荣誉展示。",
+      items: [
+        {
+          id: "l1",
+          title: "大学授课分享",
+          description: "受邀前往高校进行品牌设计与影视制作经验分享。",
+          imageUrl: "https://picsum.photos/800/600?random=50",
+          videoUrl: "",
+          gallery: []
+        },
+        {
+          id: "l2",
+          title: "荣誉证书展示",
+          description: "多年来荣获的各类行业奖项与认证。",
+          imageUrl: "https://picsum.photos/800/600?random=51",
           videoUrl: "",
           gallery: []
         }

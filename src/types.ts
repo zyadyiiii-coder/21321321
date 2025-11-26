@@ -4,7 +4,13 @@ export enum CategoryType {
   VIDEO = 'video',
   MUSIC = 'music',
   EVENT = 'event',
-  PRINT = 'print'
+  PRINT = 'print',
+  LECTURE = 'lecture' // Added LECTURE category
+}
+
+export interface ImageStyleConfig {
+  fit: 'cover' | 'contain' | 'fill' | 'scale-down'; // CSS object-fit
+  position: string; // CSS object-position (e.g., 'center', 'top', 'left', '50% 50%')
 }
 
 export interface PortfolioItem {
@@ -12,41 +18,45 @@ export interface PortfolioItem {
   title: string;
   description?: string;
   imageUrl: string;
-  videoUrl?: string; // URL to the video file (mp4)
-  audioUrl?: string; // URL to audio file (mp3)
+  imgStyle?: ImageStyleConfig; 
+  videoUrl?: string; 
+  audioUrl?: string; 
   tags?: string[];
-  gallery?: string[]; // Extra images for the detail page
+  gallery?: string[]; 
 }
 
 export interface ServiceCategory {
   id: CategoryType;
   title: string;
   subtitle: string;
-  icon: string; // FontAwesome class
-  iconUrl?: string; // Custom icon image
+  icon: string; 
+  iconUrl?: string; 
   description: string;
   items: PortfolioItem[];
 }
 
 export interface TeamMember {
   id: string;
-  name?: string; // Optional, can use role as main identifier based on PDF
+  name?: string; 
   role: string;
   imageUrl: string;
-  bio?: string; // Detailed introduction
-  works?: string[]; // Array of image URLs showing their work
+  imgStyle?: ImageStyleConfig; 
+  bio?: string; 
+  works?: string[]; 
 }
 
 export interface Partner {
   id: string;
   name: string;
   logoUrl: string;
+  imgStyle?: ImageStyleConfig; 
 }
 
 export interface BrandLogo {
   id: string;
   name: string;
   imageUrl: string;
+  imgStyle?: ImageStyleConfig; 
 }
 
 export interface SubBrand {
@@ -55,6 +65,7 @@ export interface SubBrand {
   subtitle: string;
   icon?: string;
   iconUrl?: string;
+  imgStyle?: ImageStyleConfig; 
 }
 
 export interface ContactInfo {
@@ -68,14 +79,17 @@ export interface AppConfig {
   slogan: string;
   description: string;
   contact: ContactInfo;
-  brandLogos: BrandLogo[]; // Added brand logos section
+  backgroundMusic?: string; // New field for global background music
+  brandLogos: BrandLogo[]; 
   services: ServiceCategory[];
   team: TeamMember[];
-  partners: Partner[]; // Added partners section
-  heroConfig?: { // Added hero background config
+  partners: Partner[]; 
+  heroConfig?: { 
     backgroundImage?: string;
     backgroundColor?: string;
+    backgroundSize?: string;
+    backgroundPosition?: string;
   };
-  subBrands?: SubBrand[]; // Optional sub-brands
-  uiIcons?: Record<string, string>; // Custom UI icons map
+  subBrands?: SubBrand[]; 
+  uiIcons?: Record<string, string>; 
 }

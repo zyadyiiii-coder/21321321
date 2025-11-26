@@ -15,7 +15,6 @@ const CategoryDetail: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-10">
-      {/* Header Banner */}
       <div className="bg-brand-red text-white py-12 px-6 text-center rounded-b-[2rem] shadow-lg mb-8">
         <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm overflow-hidden">
            {category.iconUrl ? (
@@ -29,7 +28,6 @@ const CategoryDetail: React.FC = () => {
         <p className="mt-4 text-sm max-w-lg mx-auto opacity-90">{category.description}</p>
       </div>
 
-      {/* Grid Content */}
       <div className="max-w-4xl mx-auto px-4">
         {category.items.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
@@ -47,16 +45,16 @@ const CategoryDetail: React.FC = () => {
                 >
                 <Link to={`/project/${item.id}`} className="block h-full">
                   <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
-                      <div className="relative group aspect-video">
+                      <div className="relative group aspect-video overflow-hidden">
                           <img 
                               src={item.imageUrl} 
                               alt={item.title} 
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                              className="w-full h-full transition-transform duration-500 group-hover:scale-105"
+                              style={{ objectFit: item.imgStyle?.fit || 'cover', objectPosition: item.imgStyle?.position || 'center' }}
                               loading="lazy"
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
                           
-                          {/* Play Icon for Video Items */}
                           {item.videoUrl && (
                              <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
@@ -69,7 +67,6 @@ const CategoryDetail: React.FC = () => {
                              </div>
                           )}
 
-                          {/* Headphone Icon for Music Items */}
                           {item.audioUrl && !item.videoUrl && (
                              <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">

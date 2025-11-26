@@ -13,13 +13,15 @@ const Footer: React.FC = () => {
         {data.brandLogos && data.brandLogos.length > 0 && (
             <div className="flex flex-wrap justify-center items-center gap-6 mb-8 border-b border-gray-800 pb-8">
               {data.brandLogos.map((brand) => (
-                   <img 
-                     key={brand.id}
-                     src={brand.imageUrl} 
-                     alt={brand.name} 
-                     className="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all"
-                     title={brand.name}
-                   />
+                   <div key={brand.id} className="h-10 w-24">
+                     <img 
+                       src={brand.imageUrl} 
+                       alt={brand.name} 
+                       className="w-full h-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all"
+                       style={{ objectFit: brand.imgStyle?.fit || 'contain', objectPosition: brand.imgStyle?.position || 'center' }}
+                       title={brand.name}
+                     />
+                   </div>
               ))}
             </div>
         )}
