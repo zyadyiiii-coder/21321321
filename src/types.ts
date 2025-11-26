@@ -1,3 +1,4 @@
+
 export enum CategoryType {
   BRAND = 'brand',
   VIDEO = 'video',
@@ -12,6 +13,7 @@ export interface PortfolioItem {
   description?: string;
   imageUrl: string;
   videoUrl?: string; // URL to the video file (mp4)
+  audioUrl?: string; // URL to audio file (mp3)
   tags?: string[];
   gallery?: string[]; // Extra images for the detail page
 }
@@ -34,6 +36,12 @@ export interface TeamMember {
   works?: string[]; // Array of image URLs showing their work
 }
 
+export interface Partner {
+  id: string;
+  name: string;
+  logoUrl: string;
+}
+
 export interface ContactInfo {
   phone: string[];
   companyName: string;
@@ -46,5 +54,10 @@ export interface AppConfig {
   description: string;
   contact: ContactInfo;
   services: ServiceCategory[];
-  team: TeamMember[]; // Added team section
+  team: TeamMember[];
+  partners: Partner[]; // Added partners section
+  heroConfig?: { // Added hero background config
+    backgroundImage?: string;
+    backgroundColor?: string;
+  };
 }

@@ -1,3 +1,4 @@
+
 import { AppConfig, CategoryType } from '../types';
 
 // ==========================================
@@ -6,21 +7,48 @@ import { AppConfig, CategoryType } from '../types';
 // 修改说明：
 // 1. 修改文字：直接修改引号 '' 里的内容。
 // 2. 修改图片：将 imageUrl 换成您的图片链接。
+//    - 如果是本地图片，请将图片放入 public 文件夹，然后填入 '/your-image.jpg'
 // 3. 修改视频：将 videoUrl 换成您的视频链接 (.mp4)。
-//    注意：如果有 videoUrl，图片(imageUrl)会作为视频封面显示。
-//          如果没有 videoUrl (留空 "")，则只显示图片。
-// 4. 修改图集：在 gallery (案例) 或 works (人员) 中添加更多图片链接，格式为 ['链接1', '链接2']
+//    - 如果有 videoUrl，图片(imageUrl)会作为视频封面显示。
+// 4. 修改音频：将 audioUrl 换成您的音频链接 (.mp3)。
+// 5. 修改图集：在 gallery (案例) 或 works (人员) 中添加更多图片链接。
+// 6. 修改首页背景：在 heroConfig 中设置 backgroundColor (颜色) 或 backgroundImageUrl (图片)。
 // ==========================================
 
 export const APP_DATA: AppConfig = {
   companyName: "译道佳华",
   slogan: "为热爱而生 · 为您而来",
   description: "贵州译道佳华文化发展有限公司，前身是一家经营10多年的品牌设计工作室。现以视觉传达为核心，协助各政府、机构、企业宣传推广的创意型文化发展公司。旗下拥有【醒狮影视】&【龙予成林音乐工作室】影音创作组织架构。",
+  
+  // 首页首屏背景配置 (First Page Background)
+  heroConfig: {
+    // 默认背景色 (红色: #b91c1c)
+    backgroundColor: '#b91c1c',
+    
+    // 背景图片 (如果您想用图片代替红色背景，请取消下面这行的注释并填入链接)
+    // backgroundImageUrl: 'https://picsum.photos/1920/1080', 
+  },
+
   contact: {
     companyName: "贵州译道佳华文化发展有限公司",
     phone: ["15985194981", "13984832580"],
     address: "贵州省贵阳市"
   },
+  // 服务商家 Logo 展示 (PDF P7)
+  partners: [
+    { id: 'p1', name: '中国工商银行', logoUrl: 'https://logo.clearbit.com/icbc.com.cn' },
+    { id: 'p2', name: '贵州农信', logoUrl: 'https://via.placeholder.com/150x60?text=Guizhou+NongXin' },
+    { id: 'p3', name: '苏宁易购', logoUrl: 'https://logo.clearbit.com/suning.com' },
+    { id: 'p4', name: '保利新联', logoUrl: 'https://via.placeholder.com/150x60?text=Poly+XinLian' },
+    { id: 'p5', name: 'GHMA', logoUrl: 'https://via.placeholder.com/150x60?text=GHMA' },
+    { id: 'p6', name: '国贸集团', logoUrl: 'https://via.placeholder.com/150x60?text=Modern+Capital' },
+    { id: 'p7', name: '中国南方电网', logoUrl: 'https://logo.clearbit.com/csg.cn' },
+    { id: 'p8', name: '国际山地旅游联盟', logoUrl: 'https://via.placeholder.com/150x60?text=IMTA' },
+    { id: 'p9', name: '贵州黔通智联', logoUrl: 'https://via.placeholder.com/150x60?text=QianTong' },
+    { id: 'p10', name: 'doTERRA', logoUrl: 'https://logo.clearbit.com/doterra.com' },
+    { id: 'p11', name: 'CETC大数据院', logoUrl: 'https://via.placeholder.com/150x60?text=CETC' },
+    { id: 'p12', name: '联动云', logoUrl: 'https://via.placeholder.com/150x60?text=LianDongYun' }
+  ],
   // 核心人员简介 (Core Team)
   team: [
     {
@@ -233,6 +261,8 @@ export const APP_DATA: AppConfig = {
           description: "专业录音与编曲设备，提供高品质声音制作环境。",
           imageUrl: "https://picsum.photos/800/600?random=20",
           videoUrl: "",
+          // 自主音乐链接示例 (MP3)
+          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", 
           gallery: []
         },
         {
@@ -241,6 +271,7 @@ export const APP_DATA: AppConfig = {
           description: "为企业定制品牌主题曲，增强团队凝聚力与品牌识别度。",
           imageUrl: "https://picsum.photos/800/600?random=21",
           videoUrl: "",
+          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
           gallery: []
         }
       ]

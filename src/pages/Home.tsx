@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { APP_DATA } from '../data/config';
@@ -6,11 +7,35 @@ import { motion } from 'framer-motion';
 const Home: React.FC = () => {
   const data = APP_DATA;
   
+  // Logic for hero background customization
+  const hasBgImage = !!data.heroConfig?.backgroundImage;
+  const heroStyle: React.CSSProperties = hasBgImage
+    ? { 
+        backgroundImage: `url(${data.heroConfig?.backgroundImage})`, 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center' 
+      }
+    : { 
+        backgroundColor: data.heroConfig?.backgroundColor || '#b91c1c' 
+      };
+  
   return (
     <div className="pb-10">
       {/* Hero Section */}
-      <div className="relative h-[60vh] bg-brand-red overflow-hidden flex flex-col items-center justify-center text-center text-white p-6">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+      <div 
+        className="relative h-[60vh] overflow-hidden flex flex-col items-center justify-center text-center text-white p-6 transition-colors duration-500"
+        style={heroStyle}
+      >
+        {/* Texture overlay only if no image */}
+        {!hasBgImage && (
+             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+        )}
+
+        {/* Dark overlay if image is used to ensure text readability */}
+        {hasBgImage && (
+             <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
+        )}
+
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -24,7 +49,41 @@ const Home: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Intro Section */}
+      {/* Partners / Logos Section (Added above Company Profile) */}
+      <section className="py-8 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-6">
+            <h3 className="text-lg font-bold text-gray-800">部分服务商家</h3>
+            <p className="text-xs text-gray-400 uppercase">Our Partners</p>
+          </div>
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {data.partners && data.partners.map((partner, index) => (
+              <motion.div 
+                key={partner.id}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: index * 0.05 }}
+                className="flex items-center justify-center p-3 bg-gray-50 rounded-lg border border-gray-100 hover:shadow-md transition-shadow"
+              >
+                 <img 
+                    src={partner.logoUrl} 
+                    alt={partner.name} 
+                    title={partner.name}
+                    className="max-h-8 w-auto grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                    onError={(e) => {
+                      // Fallback if logo fails
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                    }}
+                 />
+                 <span className="hidden text-xs text-gray-500 font-medium">{partner.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Intro Section (Company Profile) */}
       <section className="py-12 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-4 mb-6">
